@@ -8,11 +8,19 @@ Hier ist die erste Seite von der ToDoApp!
 <input type="submit" value="bestätigen" />
 </form>
 
-<% if(task && !task.empty?) %>
+
 <ul>
-<li><%= task %></li>
+  <% tasks.each do |task| %>
+    <li>
+    	<form action="/tasks/delete" METHOD= "POST">
+    	  <button>delete</button>
+    	  <%= task.name %>
+    	  <input type='hidden' value='<%=task.id%>' name="task_id">
+    	</form>
+    </li>
+  <% end %>
 </ul>
-<% end %>
+
 
 <p>
 <strong>
