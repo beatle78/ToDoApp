@@ -4,9 +4,10 @@ module ToDoApp
   class Application < Lotus::Application
     configure do
       routes do
-        get '/', to: 'home#index'
-        post '/', to: 'home#index'
+        get '/', to: 'home#index' #leitet es an server und zurück zum browser
+        post '/tasks/create', to: 'home#create'
         post '/tasks/delete', to: 'home#delete'
+        # Reihenfolge wichtig, da er von oben nach unten durchläuft
         get '/impressum', to: 'imprint#page'
       end
 

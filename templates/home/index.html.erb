@@ -3,11 +3,16 @@
 <p>
 Hier ist die erste Seite von der ToDoApp!
 </p>
-<form action="/" method='POST'>
- Deine Aufgabe: <input name="task"/>
+<form action="/tasks/create" method='POST'>
+ Deine Aufgabe: <input name="task" autofocus="true"/>
+ <!--Damit das Eingabefeld aktiv bleibt-->
 <input type="submit" value="bestätigen" />
 </form>
 
+<form method= "get" action="/"> 
+  <button name="alphabetically">a-z</button>
+  <button name="newest">latest</button>
+</form>
 
 <ul>
   <% tasks.each do |task| %>
