@@ -3,6 +3,10 @@ module ToDoApp
     module Users
       class New
         include ToDoApp::View
+      end
+
+      class Signin
+        include ToDoApp::View
 
       end
     end
