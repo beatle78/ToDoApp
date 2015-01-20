@@ -46,15 +46,7 @@ module ToDoApp
       end  
 
 
-      action 'Delete' do
-
-        def call(params)
-          task = ToDoApp::Repositories::TaskRepository.find(params[:task_id])
-          ToDoApp::Repositories::TaskRepository.delete(task)
-
-          redirect_to '/' #lotusmethode
-        end
-      end  
+      
     end
   end
 end
