@@ -1,12 +1,18 @@
+
+
 module ToDoApp
   module Controllers
     module Home
       include ToDoApp::Controller
 
       action 'Index' do
+        include Lotus::Action::Session 
         expose :tasks
+        expose :user
+
 
         def call(params)
+          puts "Session: #{session[:user]}"
           if params[:newest]
             @tasks = ToDoApp::Repositories::TaskRepository.latest_tasks
           elsif params[:alphabetically]
@@ -14,6 +20,8 @@ module ToDoApp
           else
             @tasks = ToDoApp::Repositories::TaskRepository.all
           end
+          
+            @user = ToDoApp::Repositories::UserRepository.by_id(session[:user])
         end
       end
 

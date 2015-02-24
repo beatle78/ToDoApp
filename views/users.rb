@@ -7,7 +7,6 @@ module ToDoApp
 
       class Signin
         include ToDoApp::View
-
       end
     end
   end

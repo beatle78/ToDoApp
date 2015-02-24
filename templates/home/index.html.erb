@@ -1,36 +1,55 @@
 
 <h1>ToDoApp</h1>
 <p>
-Willkommen!
+WELLCOME!
 </p>
 
-<a href="/users/new">sign up</a>
-<a href="/users/signin">sign in</a>
+<p>
+  
+  <a href="/impressum">IMPRESSUM </a>  
 
+<% if user %>
+  
+  <p><%= user.email %></p>
+ 
+  <form action="/sessions/signout" method='POST'>
+ <!--Damit das Eingabefeld aktiv bleibt-->
+<input type="submit" value="SIGN OUT" />
+</form>
+  <% else%>
+    |
+    <a href="/users/new">SIGN UP </a> | 
+    <a href="/users/signin">SIGN IN </a>
+<% end %>
 
+</p>
+
+<% if user %>
 <form action="/tasks/create" method='POST'>
  Deine Aufgabe: <input name="task" autofocus="true"/>
  <!--Damit das Eingabefeld aktiv bleibt-->
-<input type="submit" value="bestätigen" />
+<input type="submit" value="confirm" />
 </form>
+
 
 <form method= "get" action="/"> 
   <button name="alphabetically">a-z</button>
   <button name="newest">latest</button>
 </form>
 
+
 <ul>
   <% tasks.each do |task| %>
     <li>
     	<form action="/tasks/delete" METHOD= "POST">
-    	  <button>delete</button>
+    	  <button>x</button> <!--delete-->
     	  <%= task.name %>
     	  <input type='hidden' value='<%=task.id%>' name="task_id">
     	</form>
     </li>
   <% end %>
 </ul>
-
+<% end %>
 
 <p>
 <strong>
@@ -58,7 +77,7 @@ Priorisation </strong>
 
 </p>
 
-<a href="/impressum">Hier zum Impressum</a>
+
 
 
 

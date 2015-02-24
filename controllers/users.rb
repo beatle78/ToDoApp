@@ -28,12 +28,10 @@ module ToDoApp
       end
 
       action "Signin" do
-
+        # Hier wird auf einen Benutzernamen verwiesen
         def call(params)
         end  
       end
-
-
     end
   end
 end

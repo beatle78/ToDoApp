@@ -1,5 +1,6 @@
 require 'lotus'
 require 'lotus/model'
+require 'lotus/action/session'
 module ToDoApp
   class Application < Lotus::Application
     configure do
@@ -8,7 +9,10 @@ module ToDoApp
         post '/tasks/create', to: 'home#create'
         post '/tasks/delete', to: 'home#delete'
         post '/users/create', to: 'users#create'
+        post '/sessions/create', to: 'sessions#create'
+        post '/sessions/signout', to: 'sessions#signout'
         # Reihenfolge wichtig, da er von oben nach unten durchläuft
+        
         get '/users/signin', to: 'users#signin'
         get '/users/new', to: 'users#new'
         get '/impressum', to: 'imprint#page'
