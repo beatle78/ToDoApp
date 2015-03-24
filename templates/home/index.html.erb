@@ -1,12 +1,39 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">ToDoApp</a>
+    </div>
 
-<h1>ToDoApp</h1>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li><a href="/impressum">IMPRESSUM </a></li>
+  
+        <li><a href="/users/new">SIGN UP </a></li>
+  
+        <li><a href="/users/signin">SIGN IN </a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
 <p>
 WELLCOME!
 </p>
 
-<p>
-  
-  <a href="/impressum">IMPRESSUM </a>  
+
+
+<p>   
 
 <% if user %>
   
@@ -16,10 +43,7 @@ WELLCOME!
  <!--Damit das Eingabefeld aktiv bleibt-->
 <input type="submit" value="SIGN OUT" />
 </form>
-  <% else%>
-    |
-    <a href="/users/new">SIGN UP </a> | 
-    <a href="/users/signin">SIGN IN </a>
+
 <% end %>
 
 </p>
