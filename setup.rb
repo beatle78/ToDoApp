@@ -10,6 +10,7 @@ database = Sequel.connect(CONNECTION_URI)
 database.create_table! :tasks do
   primary_key :id
   String :name
+  Integer :user_id
 end
 #sqlite
 #|

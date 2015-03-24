@@ -3,7 +3,7 @@ module ToDoApp
     module Sessions
       include ToDoApp::Controller
 
-      
+
      action "Create" do
       include Lotus::Action::Session
         def call(params)
