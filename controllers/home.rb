@@ -6,30 +6,36 @@ module ToDoApp
       include ToDoApp::Controller
 
       action 'Index' do
-        include Lotus::Action::Session 
+        include Lotus::Action::Session
         expose :tasks
         expose :user
 
 
         def call(params)
-          puts "Session: #{session[:user]}"
+
+          user_id = session[:user]
+          puts "SESSION: #{user_id}"
+
           if params[:newest]
-            @tasks = ToDoApp::Repositories::TaskRepository.latest_tasks
+            @tasks = ToDoApp::Repositories::TaskRepository.latest_tasks(user_id)
           elsif params[:alphabetically]
-            @tasks = ToDoApp::Repositories::TaskRepository.alphabetically
+            @tasks = ToDoApp::Repositories::TaskRepository.alphabetically(user_id)
           else
-            @tasks = ToDoApp::Repositories::TaskRepository.all
+            @tasks = ToDoApp::Repositories::TaskRepository.for_user(user_id)
           end
-          
+
             @user = ToDoApp::Repositories::UserRepository.by_id(session[:user])
         end
       end
 
       action "Create" do
-
+        include Lotus::Action::Session
         def call(params)
 
-          new_task = ToDoApp::Models::Task.new({name: params[:task]})
+          new_task = ToDoApp::Models::Task.new({
+            name: params[:task],
+            user_id: session[:user]
+            })
           if !new_task.name.nil? && !new_task.name.strip.empty?
             ToDoApp::Repositories::TaskRepository.create(new_task)
           end
@@ -51,10 +57,10 @@ module ToDoApp
 
           redirect_to '/' #lotusmethode
         end
-      end  
+      end
 
 
-      
+
     end
   end
 end

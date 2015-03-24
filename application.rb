@@ -12,7 +12,7 @@ module ToDoApp
         post '/sessions/create', to: 'sessions#create'
         post '/sessions/signout', to: 'sessions#signout'
         # Reihenfolge wichtig, da er von oben nach unten durchläuft
-        
+
         get '/users/signin', to: 'users#signin'
         get '/users/new', to: 'users#new'
         get '/impressum', to: 'imprint#page'
@@ -32,7 +32,7 @@ module ToDoApp
   end
 
   CONNECTION_URI = "sqlite://#{ __dir__ }/test.db"
-  
+
   Lotus::Model.configure do
     adapter type: :sql, uri: CONNECTION_URI
 
@@ -43,6 +43,7 @@ module ToDoApp
 
         attribute :id,   Integer
         attribute :name, String
+        attribute :user_id, Integer
       end
       collection :users do
         entity     ToDoApp::Models::User
